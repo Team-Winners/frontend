@@ -17,7 +17,6 @@ const InterviewFeatureGrid = () => {
         </motion.h2>
 
         <div className="flex flex-col md:flex-row w-full gap-6">
-          {/* Large Image with overlay text */}
           <div className="relative w-full md:w-2/3 h-[calc(100vw*0.405)] rounded-xl overflow-hidden">
             <img
               src={heroImg}
@@ -41,7 +40,6 @@ const InterviewFeatureGrid = () => {
             </div>
           </div>
 
-          {/* Two stacked smaller images */}
           <div className="w-full md:w-1/3 flex flex-col gap-6">
             <img
               src={side2}

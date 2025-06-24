@@ -1,32 +1,16 @@
-import HeaderHomePage from './HeaderHomePage';
+import HeaderHomePage from './Header';
 import FloatingNews from './FloatingNews';
-import { Highlight, HeroHighlight } from '../HeroHighlightDemo';
+import { Highlight, HeroHighlight } from '../HeroSection';
 import Footer from './Footer';
-import InterviewFeatureGrid from './Test';
-import { Link } from 'react-router-dom';
+import InterviewFeatureGrid from './InterviewFeature';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import ChatFeature from './ChatFeature';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faBrain, faUserGraduate, faChevronRight, faArrowRight, faMicrophone } from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate, faChevronRight, faArrowRight, faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
 const Homepage = () => {
-  const features = [
-    {
-      icon: faCode,
-      title: "Frontend Development",
-      description: "Master React, JavaScript, CSS, and other frontend technologies through realistic interview scenarios."
-    },
-    {
-      icon: faBrain,
-      title: "Backend Development",
-      description: "Practice Node.js, Python, Java, databases, and system design with challenging technical questions."
-    },
-    {
-      icon: faUserGraduate,
-      title: "Data Structures & Algorithms",
-      description: "Sharpen your problem-solving skills with algorithmic challenges and optimization problems."
-    }
-  ];
+  const navigate = useNavigate();
 
   const benefitsList = [
     "Personalized questions based on your experience level",
@@ -48,7 +32,7 @@ const Homepage = () => {
         >
           <p className='mb-3'>Practice interviews<br /></p>
           <Highlight className="text-black dark:text-white font-semibold px-5">
-            with the precision of AI
+            with the precision of Untitled AI
           </Highlight>
         </motion.h1>
 
@@ -74,12 +58,7 @@ const Homepage = () => {
             Get Started
           </Link>
           <button
-            onClick={() => {
-              const featuresSection = document.getElementById("chat-feature");
-              if (featuresSection) {
-                featuresSection.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
+            onClick={() => navigate('/dashboard')}
             className="px-8 py-3 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-full font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
           >
             View Demo
@@ -89,6 +68,7 @@ const Homepage = () => {
 
       <FloatingNews />
       <InterviewFeatureGrid />
+
       
       
       {/* Interview Demo Section */}
@@ -167,6 +147,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+      <FloatingNews />
       
       {/* Call to Action */}
      <ChatFeature />

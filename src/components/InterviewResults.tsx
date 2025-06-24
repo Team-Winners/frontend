@@ -4,12 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faInfoCircle, faArrowRight, faStar } from '@fortawesome/free-solid-svg-icons';
 import HeaderHomePage from './HeaderHomePage';
 import interviewService from '../services/interview.service';
-import type { InterviewResultData } from '../services/interview.service';
 import Loading from './ui/Loading';
 
 const InterviewResults = () => {
   const { id: interviewId } = useParams<{ id: string }>();
-  const [results, setResults] = useState<InterviewResultData | null>(null);
+  const [results, setResults] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import HeaderHomePage from './HeaderHomePage';
+import HeaderHomePage from './Header';
 import Footer from './Footer';
 
 const TermsAndConditions = () => {

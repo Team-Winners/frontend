@@ -40,7 +40,6 @@ const Login = () => {
 
   return (
     <div className="flex h-screen w-screen bg-white text-black">
-      {/* Left side image */}
       <div className="hidden md:block w-1/2 h-full">
         <img
           src={LoginImg}
@@ -49,7 +48,6 @@ const Login = () => {
         />
       </div>
 
-      {/* Right side form */}
       <div className="w-full md:w-1/2 h-full flex justify-center items-center p-8 bg-white">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
@@ -112,8 +110,6 @@ const Login = () => {
                 </a>
               </div>
             </div>
-
-            {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-4 justify-between items-center w-full mt-6">
               <button
                 type="submit"

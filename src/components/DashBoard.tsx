@@ -3,20 +3,19 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faBrain, faDatabase, faLaptopCode, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import HeaderHomePage from './HeaderHomePage';
+import HeaderHomePage from './Header';
 import { AuthContext } from '../context/AuthContext';
 import interviewService from '../services/interview.service';
 import type { Topic } from '../services/interview.service';
 import authService from '../services/auth.service';
 import type { Skill } from '../services/auth.service';
 
-// Function to get activity color based on level
 const getActivityColor = (level: number) => {
   switch (level) {
     case 0: return 'bg-gray-800';
-    case 1: return 'bg-blue-900';
-    case 2: return 'bg-blue-700';
-    case 3: return 'bg-blue-500';
+    case 1: return 'bg-green-900';
+    case 2: return 'bg-green-700';
+    case 3: return 'bg-green-500';
     default: return 'bg-gray-800';
   }
 };
@@ -24,12 +23,12 @@ const getActivityColor = (level: number) => {
 // Component to render individual topic skill ratings
 const SkillRating = ({ name, rating, icon }: { name: string; rating: number; icon: IconDefinition }) => {
   return (
-    <div className="bg-black border border-gray-800 p-4 rounded-xl shadow-sm">
+    <div className="bg-black border border-gray-400 p-4 rounded-xl shadow-sm">
       <div className="flex items-center gap-3 mb-3">
-        <div className="bg-gray-900 p-2 rounded-lg">
-          <FontAwesomeIcon icon={icon} className="text-white" />
+        <div className="bg-gray-800 p-2 rounded-lg">
+          <FontAwesomeIcon icon={icon} className="text-orange-500 bh" />
         </div>
-        <h3 className="font-semibold text-white">{name}</h3>
+        <h3 className="font-semibold text-white text-md">{name}</h3>
       </div>
       <input 
         type="range" 
@@ -48,13 +47,12 @@ const SkillRating = ({ name, rating, icon }: { name: string; rating: number; ico
   );
 };
 
-// Component to render interview cards
 const InterviewCard = ({ title, description, icon, colorClass, topicId }: { title: string; description: string; icon: IconDefinition; colorClass: string; topicId?: string }) => {
   const linkPath = topicId ? `/interview?topic=${topicId}` : "/interview";
   
   return (
     <Link to={linkPath} className="group">
-      <div className="bg-black border border-gray-800 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+      <div className="bg-black border border-gray-400 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
         <div className={`w-12 h-12 ${colorClass} rounded-lg flex items-center justify-center mb-4`}>
           <FontAwesomeIcon icon={icon} className="text-white text-xl" />
         </div>
@@ -268,34 +266,32 @@ const Dashboard = () => {
     <div className="min-h-screen bg-black">
       <HeaderHomePage />
       
-      <div className="container mx-auto max-w-6xl py-8 px-4 mt-16">
+      <div className="container mx-auto max-w-7xl py-8 px-4 mt-16">
         {/* User welcome section */}
-        <div className="bg-black border border-gray-800 rounded-xl shadow-md p-6 mb-8">
+        <div className="bg-black border border-gray-400 rounded-xl shadow-md p-6 my-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-white mb-1">Welcome back, {user?.username || user?.name || 'User'}</h1>
-              <p className="text-gray-300">Track your progress and continue practicing for your interviews.</p>
+              <h1 className="text-xl font-bold text-white mb-3">Welcome back, {" "}{user?.username || user?.name || 'User'}</h1>
+              <p className="text-blue-300 text-md">Track your progress and continue practicing for your interviews.</p>
             </div>
             <Link 
               to="/interview" 
-              className="px-4 py-2 bg-white text-black rounded-md font-medium text-sm hover:bg-gray-200 transition-colors whitespace-nowrap"
+              className="px-4 py-2 bg-gray-300 text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors whitespace-nowrap"
             >
               Start New Interview
             </Link>
           </div>
         </div>
         
-        {/* Activity and skills section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="md:col-span-2">
-            <div className="bg-black border border-gray-800 p-4 rounded-xl shadow-sm">
-              <h3 className="font-semibold text-white mb-4">Your Interview Activity</h3>
+            <div className="bg-black border border-gray-400 p-4 rounded-xl shadow-sm">
+              <h3 className="font-semibold text-white mb-8 tracking-wide text-lg">Your Interview Activity Heat Map</h3>
               <div className="grid grid-flow-col gap-1 mb-2">
-                {/* Generate random activity data for display */}
                 {Array.from({ length: 12 }).map((_, weekIndex) => (
                   <div key={weekIndex} className="grid grid-flow-row gap-1">
                     {Array.from({ length: 7 }).map((_, dayIndex) => {
-                      const activityLevel = Math.floor(Math.random() * 4); // 0-3 activity level
+                      const activityLevel = Math.floor(Math.random() * 4);
                       return (
                         <div 
                           key={`${weekIndex}-${dayIndex}`} 
@@ -310,19 +306,19 @@ const Dashboard = () => {
               <div className="flex items-center justify-end gap-2 mt-2 text-xs text-gray-400">
                 <span>Less</span>
                 <div className="w-3 h-3 rounded-sm bg-gray-800"></div>
-                <div className="w-3 h-3 rounded-sm bg-blue-900"></div>
-                <div className="w-3 h-3 rounded-sm bg-blue-700"></div>
-                <div className="w-3 h-3 rounded-sm bg-blue-500"></div>
+                <div className="w-3 h-3 rounded-sm bg-green-900"></div>
+                <div className="w-3 h-3 rounded-sm bg-green-700"></div>
+                <div className="w-3 h-3 rounded-sm bg-green-500"></div>
                 <span>More</span>
               </div>
             </div>
           </div>
           <div>
-            <div className="bg-black border border-gray-800 p-4 rounded-xl shadow-sm">
-              <h3 className="font-semibold text-white mb-4">Recent Performance</h3>
+            <div className="bg-black border border-gray-400 p-4 rounded-xl shadow-sm">
+              <h3 className="font-semibold text-white mb-4 text-lg">Recent Performance</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Last interview score</span>
+                  <span className="text-blue-400">Last interview score</span>
                   <span className="font-semibold text-white">
                     {dashboardData?.recentInterviews && dashboardData.recentInterviews.length > 0 
                       ? `${dashboardData.recentInterviews[0].score}%` 
@@ -330,26 +326,26 @@ const Dashboard = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Total interviews</span>
+                  <span className="text-blue-400">Total interviews</span>
                   <span className="font-semibold text-white">
                     {dashboardData?.recentInterviews?.length || 0}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Average Score</span>
+                  <span className="text-blue-400">Average Score</span>
                   <span className="font-semibold text-white">
                     {dashboardData?.recentInterviews && dashboardData.recentInterviews.length > 0 
                       ? Math.round(dashboardData.recentInterviews.reduce((sum, interview) => sum + interview.score, 0) / dashboardData.recentInterviews.length)
-                      : 'N/A'}%
+                      : 'N/A'}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Skills Tracked</span>
+                  <span className="text-blue-400">Skills Tracked</span>
                   <span className="font-semibold text-white">
                     {dashboardData?.skillRatings?.length || userSkills.length || 0}
                   </span>
                 </div>
-                <div className="pt-2 border-t border-gray-800">
+                <div className="pt-4 border-t border-gray-400">
                   {dashboardData?.recentInterviews && dashboardData.recentInterviews.length > 0 ? (
                     <Link 
                       to={`/results/${dashboardData.recentInterviews[0].id}`} 
@@ -368,8 +364,8 @@ const Dashboard = () => {
         </div>
         
         {/* Skills rating section */}
-        <h2 className="text-xl font-semibold text-white mb-4">Your Skills</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <h2 className="text-lg font-semibold text-white mb-5 tracking-wide">Your Skills</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {skillRatings.length > 0 ? skillRatings.map((skill, index) => (
             <SkillRating 
               key={index}
@@ -395,8 +391,7 @@ const Dashboard = () => {
           )}
         </div>
         
-        {/* Interview cards section */}
-        <h2 className="text-xl font-semibold text-white mb-4">Practice Interviews</h2>
+        <h2 className="text-lg font-semibold text-white mb-5">Practice Interviews</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {interviewCards.map((card, index) => (
             <InterviewCard 

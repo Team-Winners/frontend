@@ -3,16 +3,14 @@ import { cn } from "./lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "motion/react";
 import React from "react";
 
-interface HeroHighlightDemoProps {
-  children?: React.ReactNode;
+export const HeroHighlight = ({
+  children,
+  className,
+  containerClassName,
+}: {
+  children: React.ReactNode;
   className?: string;
   containerClassName?: string;
-}
-
-export const HeroHighlightDemo: React.FC<HeroHighlightDemoProps> = ({
-  children = null,
-  className = '',
-  containerClassName = '',
 }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);

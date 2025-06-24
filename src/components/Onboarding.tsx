@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import HeaderHomePage from './HeaderHomePage';
+import HeaderHomePage from './Header';
 import { AuthContext } from '../context/AuthContext';
 import authService from '../services/auth.service';
 
@@ -287,11 +287,11 @@ const Onboarding = () => {
     <div className="min-h-screen bg-black">
       <HeaderHomePage />
       
-      <div className="container mx-auto max-w-3xl py-12 px-4 mt-16">
-        <div className="bg-black border border-gray-800 rounded-xl shadow-md p-8 text-white">
+      <div className="container mx-auto max-w-7xl py-12 px-4 mt-16">
+        <div className="bg-black border border-gray-400 rounded-xl shadow-md p-8 text-white">
           <div className="mb-8">
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-2xl font-bold text-white">Let's personalize your experience</h1>
+              <h1 className="text-2xl font-semibold text-white">Let's personalize your experience</h1>
               <div className="text-sm text-gray-400">Step {step} of 5</div>
             </div>
             
@@ -304,11 +304,11 @@ const Onboarding = () => {
           </div>
           
           {step === 1 && (
-            <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800">Tell us about yourself</h2>
+            <div className="space-y-10">
+              <h2 className="text-xl font-semibold text-white">Tell us about yourself</h2>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  What's your name? <span className="text-red-500">*</span>
+                <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+                  What's your name?*
                 </label>
                 <input
                   type="text"
@@ -316,22 +316,22 @@ const Onboarding = () => {
                   name="name"
                   value={userData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:white"
                   placeholder="Enter your name"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="experienceLevel" className="block text-sm font-medium text-gray-700 mb-1">
-                  What's your experience level? <span className="text-red-500">*</span>
+                <label htmlFor="experienceLevel" className="block text-sm font-medium text-white mb-1">
+                  What's your experience level?*
                 </label>
                 <select
                   id="experienceLevel"
                   name="experienceLevel"
                   value={userData.experienceLevel}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 >
                   <option value="">Select your experience level</option>
@@ -343,8 +343,8 @@ const Onboarding = () => {
               </div>
               
               <div>
-                <label htmlFor="goals" className="block text-sm font-medium text-gray-700 mb-1">
-                  What are your interview goals? <span className="text-red-500">*</span>
+                <label htmlFor="goals" className="block text-sm font-medium text-white mb-1">
+                  What are your interview goals?*
                 </label>
                 <textarea
                   id="goals"
@@ -362,27 +362,27 @@ const Onboarding = () => {
           
           {step === 2 && (
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800">What are your strengths?</h2>
-              <p className="text-gray-600">Select the topics you feel confident about:</p>
+              <h2 className="text-xl font-semibold text-white">What are your strengths?</h2>
+              <p className="text-white">Select the topics you feel confident about:</p>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Frontend</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Frontend</h3>
                   {renderTopicButtons(frontendState, 'frontend', true)}
                 </div>
                 
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Backend</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Backend</h3>
                   {renderTopicButtons(backendState, 'backend', true)}
                 </div>
                 
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Databases</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Databases</h3>
                   {renderTopicButtons(databaseState, 'database', true)}
                 </div>
                 
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Data Structures & Algorithms</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Data Structures & Algorithms</h3>
                   {renderTopicButtons(dsaState, 'dsa', true)}
                 </div>
               </div>
@@ -391,27 +391,27 @@ const Onboarding = () => {
           
           {step === 3 && (
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800">What areas do you want to improve?</h2>
-              <p className="text-gray-600">Select the topics you want to focus on:</p>
+              <h2 className="text-xl font-semibold text-white">What areas do you want to improve?</h2>
+              <p className="text-white">Select the topics you want to focus on:</p>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Frontend</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Frontend</h3>
                   {renderTopicButtons(frontendState, 'frontend', false)}
                 </div>
                 
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Backend</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Backend</h3>
                   {renderTopicButtons(backendState, 'backend', false)}
                 </div>
                 
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Databases</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Databases</h3>
                   {renderTopicButtons(databaseState, 'database', false)}
                 </div>
                 
                 <div>
-                  <h3 className="text-md font-medium text-gray-700 mb-2">Data Structures & Algorithms</h3>
+                  <h3 className="text-md font-medium text-white mb-2">Data Structures & Algorithms</h3>
                   {renderTopicButtons(dsaState, 'dsa', false)}
                 </div>
               </div>
@@ -420,8 +420,8 @@ const Onboarding = () => {
           
           {step === 4 && (
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800">What programming languages do you prefer?</h2>
-              <p className="text-gray-600">Select the languages you want to use in your interviews:</p>
+              <h2 className="text-xl font-semibold text-white">What programming languages do you prefer?</h2>
+              <p className="text-white">Select the languages you want to use in your interviews:</p>
               
               {renderLanguageButtons()}
             </div>
@@ -429,53 +429,52 @@ const Onboarding = () => {
           
           {step === 5 && (
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800">Review your information</h2>
+              <h2 className="text-xl font-semibold text-white mb-5">Review your information</h2>
               
-              <div className="space-y-4">
-                <div className="bg-gray-50 p-4 rounded-md">
-                  <h3 className="font-medium text-gray-700 mb-2">Personal Information</h3>
+              <div className="space-y-7">
+                <div className="bg-black p-4 rounded-md border font-medium border-gray-400">
                   <p><span className="text-gray-500">Name:</span> {userData.name || 'Not specified'}</p>
                   <p><span className="text-gray-500">Experience Level:</span> {userData.experienceLevel || 'Not specified'}</p>
                   <p><span className="text-gray-500">Goals:</span> {userData.goals || 'Not specified'}</p>
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded-md">
-                  <h3 className="font-medium text-gray-700 mb-2">Strong Topics</h3>
+                <div className="bg-black border border-gray-400 p-4 rounded-md">
+                  <h3 className="font-medium text-white mb-4">Strong Topics</h3>
                   {userData.strongTopics.length > 0 ? (
                     <div className="flex flex-wrap gap-2">
                       {userData.strongTopics.map(topic => (
-                        <span key={topic} className="bg-green-100 text-green-800 px-2 py-1 rounded-md text-sm">
+                        <span key={topic} className="bg-green-200 text-green-900 px-2 py-1 rounded-md text-sm">
                           {topic}
                         </span>
                       ))}
                     </div>
-                  ) : <p className="text-gray-500">No topics selected</p>}
+                  ) : <p className="text-white">No topics selected</p>}
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded-md">
-                  <h3 className="font-medium text-gray-700 mb-2">Areas to Improve</h3>
+                <div className="bg-black border border-gray-400 p-4 rounded-md">
+                  <h3 className="font-medium text-white mb-4">Areas to Improve</h3>
                   {userData.weakTopics.length > 0 ? (
                     <div className="flex flex-wrap gap-2">
                       {userData.weakTopics.map(topic => (
-                        <span key={topic} className="bg-orange-100 text-orange-800 px-2 py-1 rounded-md text-sm">
+                        <span key={topic} className="bg-orange-200 text-orange-900 px-2 py-1 rounded-md text-sm">
                           {topic}
                         </span>
                       ))}
                     </div>
-                  ) : <p className="text-gray-500">No topics selected</p>}
+                  ) : <p className="text-white">No topics selected</p>}
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded-md">
-                  <h3 className="font-medium text-gray-700 mb-2">Preferred Languages</h3>
+                <div className="bg-black border border-gray-400 p-4 rounded-md">
+                  <h3 className="font-medium text-white mb-4">Preferred Languages</h3>
                   {userData.preferredLanguages.length > 0 ? (
                     <div className="flex flex-wrap gap-2">
                       {userData.preferredLanguages.map(lang => (
-                        <span key={lang} className="bg-blue-100 text-blue-800 px-2 py-1 rounded-md text-sm">
+                        <span key={lang} className="bg-blue-200 text-blue-900 px-2 py-1 rounded-md text-sm">
                           {lang}
                         </span>
                       ))}
                     </div>
-                  ) : <p className="text-gray-500">No languages selected</p>}
+                  ) : <p className="text-white">No languages selected</p>}
                 </div>
               </div>
             </div>

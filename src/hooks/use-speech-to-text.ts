@@ -19,9 +19,6 @@ interface UseSpeechToTextReturn {
 }
 
 export const useSpeechToText = ({
-  continuous = false,
-  interimResults = true,
-  lang = 'en-US',
   onResult,
   onEnd
 }: UseSpeechToTextProps = {}): UseSpeechToTextReturn => {

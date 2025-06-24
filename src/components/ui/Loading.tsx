@@ -25,7 +25,7 @@ const Loading: React.FC<LoadingProps> = ({
   
   if (fullScreen) {
     return (
-      <div className="fixed inset-0 bg-white bg-opacity-90 z-50 flex flex-col items-center justify-center">
+      <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center">
         {spinner}
         {text && <p className="mt-4 text-gray-600 font-medium">{text}</p>}
       </div>

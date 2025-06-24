@@ -68,12 +68,10 @@ const SignUp = () => {
 
   return (
     <div className="flex h-screen w-screen bg-gray-50">
-      {/* Left side image */}
       <div className="hidden md:block w-1/2 h-full">
         <img src={SignUpImg} alt="Sign Up" className="w-full h-full object-cover" />
       </div>
 
-      {/* Right side form */}
       <div className="w-full md:w-1/2 h-full flex justify-center items-center p-8">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
@@ -123,10 +121,18 @@ const SignUp = () => {
             )})}
 
             <div className="text-sm text-gray-600">
-              <p>By signing up, you agree to our <a href="#" className="text-blue-600 hover:underline">Terms of Service</a> and <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+              <p>
+                By signing up, you agree to our{' '}
+                <Link to="/terms" className="text-blue-600 hover:underline">
+                  Terms of Service
+                </Link>{' '}
+                and{' '}
+                <Link to="/privacy-policy" className="text-blue-600 hover:underline">
+                  Privacy Policy
+                </Link>.
+              </p>
             </div>
 
-            {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-4 justify-between items-center w-full mt-6">
               <button
                 type="submit"

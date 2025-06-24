@@ -15,11 +15,11 @@ const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const location = useLocation();
   
-  const menuRef = useOutsideClick(() => {
+  const menuRef = useOutsideClick<HTMLDivElement>(() => {
     setShowProfileMenu(false);
   });
   
-  const mobileMenuRef = useOutsideClick(() => {
+  const mobileMenuRef = useOutsideClick<HTMLDivElement>(() => {
     setShowMenu(false);
   });
   

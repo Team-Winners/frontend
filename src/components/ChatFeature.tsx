@@ -6,6 +6,7 @@ const ChatFeature = () => {
   const [placeholder, setPlaceholder] = useState('');
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
+  setQuery('');
   const lines = [
     "How do I prepare for a system design interview?",
     "What are common React interview questions?",
@@ -13,10 +14,6 @@ const ChatFeature = () => {
     "How should I explain my experience with databases?",
     "What's the best approach to solving algorithm problems?",
   ];
-
-  const handleInputChange = (e) => {
-    setQuery(e.target.value);
-  };
 
   useEffect(() => {
     const typingDuration = lines[currentTextIndex].length * 60;
@@ -30,7 +27,7 @@ const ChatFeature = () => {
   }, [currentTextIndex]);
 
   useEffect(() => {
-    let timeouts = [];
+    let timeouts: any = [];
     const currentLine = lines[currentTextIndex];
     setPlaceholder('');
 
@@ -42,7 +39,7 @@ const ChatFeature = () => {
     });
 
     return () => {
-      timeouts.forEach((t) => clearTimeout(t));
+      timeouts.forEach((t: any) => clearTimeout(t));
     };
   }, [currentTextIndex]);
 
@@ -52,28 +49,22 @@ const ChatFeature = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="flex flex-col items-center justify-center px-5 py-15 bg-white w-full"
+      className="flex flex-col items-center justify-center px-5 py-24 bg-white dark:bg-black w-full"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-black mb-2 tracking-tight">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-black dark:text-white mb-4 tracking-tight">
         Ask Your Interview AI
       </h2>
-      <p className="text-lg text-black mb-10 max-w-xl text-center">
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-xl text-center">
         Get instant answers to your interview preparation questions
       </p>
       
-      <div className="relative w-full max-w-5xl">
+      <div className="relative w-full max-w-2xl">
         <input
           type="text"
           value={query}
-          onChange={handleInputChange}
           placeholder={placeholder}
-          className="w-full h-14 px-6 pr-16 text-sm rounded-full border  bg-black  text-white placeholder-white dark:placeholder-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600"
+          className="w-full h-14 px-6 pr-16 text-md rounded-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600"
         />
-        <button className="absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-white flex items-center justify-center">
-          <svg className="w-4 h-4 cursor-pointer text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </button>
       </div>
       
       <div className="mt-8 flex flex-wrap gap-3 justify-center">
@@ -86,7 +77,7 @@ const ChatFeature = () => {
         ].map((tag, index) => (
           <span 
             key={index} 
-            className="px-4 py-2 text-sm bg-black text-white rounded-full"
+            className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
           >
             {tag}
           </span>

@@ -3,7 +3,7 @@ import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 
 // Create an axios instance with default config
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'https://backend-y8rv.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },

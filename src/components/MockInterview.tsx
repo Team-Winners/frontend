@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone, faMicrophoneSlash, faVolumeHigh, faSpinner, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import HeaderHomePage from './HeaderHomePage';
+import HeaderHomePage from './Header';
 import { useSpeechToText } from '../hooks/use-speech-to-text';
 import interviewService from '../services/interview.service';
 
@@ -520,7 +520,6 @@ const MockInterview = () => {
                 </div>
               )}
               
-              {/* Display speech recognition status */}
               {!hasRecognitionSupport && (
                 <div className="mt-2 text-xs text-orange-600 text-center bg-orange-50 p-2 rounded border border-orange-200">
                   ⚠️ Speech recognition is not supported in your browser. Please type your answers instead.
